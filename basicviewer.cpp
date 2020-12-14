@@ -127,6 +127,34 @@ void BasicViewer::init()
     //    setKeyDescription(Qt::Key_Space, "Change constraint reference");
     //    setKeyDescription(Qt::Key_T, "Change translation constraint type");
     //    setKeyDescription(Qt::Key_R, "Change rotation constraint type");
+    //GLfloat ambient[] = { 0.2, 0.2, 0.2, 1.0 };
+    //glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambient);
+    //glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
+
+
+    GLfloat light_ambient[]={0.2,0.2,0.2,1.0};
+    GLfloat light_diffuse[]={1.0,1.0,1.0,1.0};
+    GLfloat light_specular[]={1.0,1.0,1.0,1.0};
+    GLfloat light_position[]={2.0,2.0,2.0,0.0};
+    GLfloat mat_diffuse[]={0.8,0.8,0.8,1.0};
+
+    glLightfv(GL_LIGHT0,GL_AMBIENT,light_ambient);
+    glLightfv(GL_LIGHT0,GL_DIFFUSE,light_diffuse);
+    glLightfv(GL_LIGHT0,GL_SPECULAR,light_specular);
+    glLightfv(GL_LIGHT0,GL_POSITION,light_position);
+
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_AUTO_NORMAL);
+    glEnable(GL_NORMALIZE);
+    //glEnable(GL_CULL_FACE);
+    //启用双面光照
+    glLightModeli(GL_LIGHT_MODEL_TWO_SIDE,GL_TRUE);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,mat_diffuse);/*材质测散射颜色*/
+
+
+
+
 
     restoreStateFromFile();
 
@@ -172,6 +200,7 @@ void BasicViewer::drawmesh()
 
 void BasicViewer::drawLine()
 {
+
     float m_nclolr = 1/ (float)m_vline.size();
     for (int i =0 ;i<m_vline.size();i++)
     {

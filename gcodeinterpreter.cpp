@@ -32,7 +32,7 @@ QList<GCodeCommand> GCodeInterpreter::interpret() const
                 GCodeCommand gcode(QString::fromStdString(commandStr),lastcode);
                 result << gcode;
                 lastcode = &gcode;
-                cout<<commandStr<<endl;
+                //cout<<commandStr<<endl;
                 commandStr.clear();
                 xyzUsed[0] = xyzUsed[1] = xyzUsed[2] = false;
             }
@@ -43,7 +43,7 @@ QList<GCodeCommand> GCodeInterpreter::interpret() const
                 GCodeCommand gcode(QString::fromStdString(commandStr),lastcode);
                 result << gcode;
                 lastcode = &gcode;
-                cout<<commandStr<<endl;
+                //cout<<commandStr<<endl;
                 commandStr.clear();
                 commandStr.append(lastCode);
                 xyzUsed[0] = xyzUsed[1] = xyzUsed[2] = false;
@@ -56,7 +56,7 @@ QList<GCodeCommand> GCodeInterpreter::interpret() const
                 GCodeCommand gcode(QString::fromStdString(commandStr),lastcode);
                 result << gcode;
                 lastcode = &gcode;
-                cout<<commandStr<<endl;
+                //cout<<commandStr<<endl;
                 commandStr.clear();
                 commandStr.append(lastCode);
                 xyzUsed[0] = xyzUsed[1] = xyzUsed[2] = false;
@@ -69,7 +69,7 @@ QList<GCodeCommand> GCodeInterpreter::interpret() const
                 GCodeCommand gcode(QString::fromStdString(commandStr),lastcode);
                 result << gcode;
                 lastcode = &gcode;
-                cout<<commandStr<<endl;
+                //cout<<commandStr<<endl;
                 commandStr.clear();
                 commandStr.append(lastCode);
                 xyzUsed[0] = xyzUsed[1] = xyzUsed[2] = false;
@@ -81,7 +81,7 @@ QList<GCodeCommand> GCodeInterpreter::interpret() const
     GCodeCommand gcode(QString::fromStdString(commandStr),lastcode);
     result << gcode;
     lastcode = &gcode;
-    cout<<commandStr<<endl;
+    //cout<<commandStr<<endl;
 
     return result;
 }

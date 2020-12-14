@@ -22,7 +22,7 @@ void GCodeCommand::parse()
     int numtmp = 0;
 
     bool nxyz[3] = {false,false,false};
-    int nG=-1,nI=-1,nX=-1,nJ=-1,nY=-1,nK=-1,nZ=-1,nF=-1,nR=-1;
+    int nG=-1,nI=-1,nX=-1,nJ=-1,nY=-1,nK=-1,nZ=-1,nF=-1,nR=-1,nA = -1,nC = -1,nB = -1;
     for(int i =0;i<m_rawString.size();i++)
     {
         switch (m_rawString[i].toLatin1())
@@ -77,6 +77,21 @@ void GCodeCommand::parse()
             nR = numtmp;
             numtmp++;
             break;
+        case 'A':
+            loc[numtmp] = i;
+            nA = numtmp;
+            numtmp++;
+            break;
+        case 'C':
+            loc[numtmp] = i;
+            nC = numtmp;
+            numtmp++;
+            break;
+        case 'B':
+            loc[numtmp] = i;
+            nB = numtmp;
+            numtmp++;
+            break;
         default:
             break;
         }
@@ -90,7 +105,7 @@ void GCodeCommand::parse()
         bool bb = false;
         int nncode;
         nncode = m_rawString.mid(loc[nG]+1,loc[nG+1]-loc[nG]-1).toInt(&bb);
-        qDebug()<<nncode;
+       // qDebug()<<nncode;
         if(bb == true)
         {
             m_code =static_cast<CodeType>(nncode);
@@ -99,7 +114,6 @@ void GCodeCommand::parse()
         {
             m_code = CodeType::G00;
         }
-
     }
 
     if(nI != -1)
